@@ -1,0 +1,586 @@
+@import '_utils.scss';
+@import url('font/stylesheet.css');
+
+$orange : #c69b6a;
+$grey: #a0a29f;
+$brown: #926642;
+
+@mixin square($size){
+    width: $size;
+    height: $size;
+}
+@mixin mdIt(){
+    font-family: 'Brother 1816 md it';
+}
+@mixin light(){
+    font-family: 'Brother 1816 Light';
+}
+@mixin book(){
+    font-family: 'Brother 1816 Book';
+}
+@mixin animation($time){
+    transition: all $time + ms ease;
+}
+@mixin animationFade($time){
+    transition: all $time + ms ease-in-out;
+}
+
+article, figure, section{
+    display: block;
+}
+*{
+    padding: 0;margin: 0;box-sizing: border-box;list-style: none;text-decoration: none;font-family: 'Brother 1816 Regular';
+}
+body{overflow-x: hidden;}
+.flex{display: flex;}
+.center{justify-content: center;}
+.between{justify-content: space-between;}
+.around{justify-content: space-around;}
+.align-center{align-items: center;}
+.column{flex-direction: column;}
+.content{padding: 0 10%;}
+header{
+    position: fixed;width: 100%;top: 0;left: 0;z-index: 10;padding: 50px 0;@include animation(600);
+    &.no-top{
+        background-color: rgba(0,0,0,0.5);padding: 10px 0;
+    }
+    .content{padding: 0 10% 0 4%;width: 100%;}
+    nav{
+        li{
+            padding: 0 20px;
+            + li{
+                border-left: solid 1px #fff;
+            }
+            a{
+                color: #fff;font-size: 30px;transition: all 250ms ease-in-out;text-transform: uppercase;
+                &:hover,&:focus{
+                    color: $orange;outline: none;
+                }
+            }
+        }
+    } 
+}
+section{
+    position: relative;background-color: #fff;
+    .navigation{
+        position: absolute;right: 3%;top: 50%;transform: translateY(-50%);
+        a{
+            @include square(25px);background-color: $grey;border-radius: 50%;display: block;text-indent: -5000em;margin: 15px 0;
+            &.act{
+                border: solid 5px #000;box-shadow: 0px 0px 1px 5px $grey;
+            }
+        }
+    }
+    .links{
+        a + a{
+            display: inline-block;margin-left: 10px;
+        }
+    }
+}
+#home{
+    height: 100vh;width: 100%;
+    .banner{
+        position: fixed;@include square(100%);top: 0;left: 0;object-fit: cover;
+    }   
+    .content{
+        justify-content: flex-end;position: relative;height: 100%;
+        .text{
+            color: #fff;font-size:44px;line-height: 1.3em;padding: 0.7em 0;@include mdIt();
+        }
+    }
+}
+#qr{
+    padding: 120px 0;background-color: #f4efeb;
+    .text{
+        @include light();color: $brown;font-size: 70px;line-height: 1.15em;
+    }
+    img{
+        margin-right: 40px;width: 200px;
+    }
+}
+#funcionalidades{
+    .navigation{
+        top: 10%;
+        .act{
+            border-color: #fff;
+        }
+    }
+    article{
+        width: 100%;
+        padding: 50px 0;
+        figure{
+            position: relative;
+        }
+        h2{
+            color: $orange;@include light();font-size: 70px;font-weight: normal;line-height: 1.15em;text-transform: uppercase;padding-bottom: 60px;
+        }
+        .text{
+            padding-left: 100px;
+            .subtitle{
+                text-transform: uppercase;color: $brown;font-weight: 700;font-size: 50px;display: block;padding: 0 0 30px;
+            }
+            p{
+                @include book();font-size: 40px;
+            }
+        }
+        &.first{
+            figure{
+                img{
+                    position: relative;
+                    &:nth-child(1){
+                        right: -75px;z-index: 2;
+                    }
+                }
+            }
+        }
+        &.second{
+            .text{
+                padding: 0 100px 0 0;
+            }
+        }
+        &.third{
+            .links{
+                padding-top: 80px;
+            }
+            figure{
+                img{
+                    position: relative;
+                    &:nth-child(1){
+                        left: 110px;
+                    }
+                }
+            }
+        }
+    }
+}
+#filme{
+    position: relative;
+    > img{
+        width: 100%;height: auto;display: block;
+    }
+    iframe{
+        position: absolute;@include square(100%);top: 0;left: 0;
+    }
+}
+#vantagens{
+    background-color: #f4efeb;padding: 100px 0;text-align: center;
+    .navigation{
+        .act{
+            border-color: #f4efeb;
+        }
+    }
+    h2{
+        color: $orange;@include light();font-size: 70px;font-weight: normal;line-height: 1.15em;text-transform: uppercase;padding-bottom: 90px;
+    }
+    .grid{
+        .box{
+            width: 30%;background-color: #fff;position: relative;padding: 90px;
+            p{
+                @include book();font-size: 35px;
+            }
+            h3{
+                position: absolute;top: 0;width:90%;left: 5%;transform: translateY(-50%);;background-color: #a0a29f;color: #fff;font-weight: 700;font-size: 40px;padding: 10px;
+            }
+        }
+    }
+}
+#faixa-app{
+    background-color: #000;z-index: 2;
+    figure{
+        background-color: #fff;padding: 15px;
+        img{
+            @include square(130px);
+        }
+    }
+    .phone{
+        margin: -40px 0;
+    }
+    .text{
+        color: #fff;font-weight: 700;font-size: 45px;line-height: 1.15em;
+    }
+}
+footer{
+    background-color: #fff;position: relative;
+    p{
+        text-align: center;@include book();font-size: 30px;padding: 60px 0;
+    }
+}
+@media only screen and (min-width: 769px){
+    #phone2,
+    #phone3b,
+    #phone1f{@include animation(1500);}
+    #phone3f,
+    #phone1b{@include animation(900);}
+    #vantagens{
+        .grid{
+            .box:nth-child(1){@include animationFade(500)}
+            .box:nth-child(2){@include animationFade(1000)}
+            .box:nth-child(3){@include animationFade(1500)}
+        }
+    }
+    article:not(.state-two){
+        #phone3f,
+        #phone3b,
+        #phone1f,
+        #phone1b{transform: translateX(-50vw);}
+        #phone2{transform: translateX(50vw);}
+        .grid .box{opacity: 0;}
+    }
+    header{
+        .menu-button{
+            display: none;
+        }
+    }
+    #funcionalidades article.mobile{display: none;}
+}
+@media only screen and (max-width: 1920px){
+    header{
+        padding: 30px 0;
+        .logo img{width: 250px;}
+        nav li a{font-size: 21px;}
+    }
+    section{
+        .links a img{
+            width: 230px;
+        }
+    }
+    #home{
+        .container{
+            > img{
+                width: 410px;
+            }
+            .text{
+                font-size: 30px;
+            }
+        }
+    }
+    #qr{
+        padding: 80px 0;
+        img{
+            width: 160px;
+        }
+        .text{
+            font-size: 50px;
+        }
+    }
+    #funcionalidades{
+        #phone1f{width: 290px;right: -50px;}
+        #phone1b{width: 210px;}
+        #phone2{width: 650px;}
+        #phone3f{width: 220px;}
+        #phone3b{width: 200px;left: 70px;}
+        article{
+            h2{
+                font-size: 50px;
+            }
+            .text{
+                
+                .subtitle{
+                    font-size: 32px;
+                }
+                p{
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+    #vantagens{
+        h2{
+            font-size: 50px;
+        }
+        .grid{
+            .box{
+                padding: 60px 40px 30px;
+                h3{
+                    font-size: 30px;
+                }
+                p{
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+    #faixa-app{
+        figure{
+            padding: 9px;
+            img{
+                @include square(100px)
+            }
+        }
+        .phone{
+            width: 280px;
+        }
+        .text{
+            font-size: 35px;
+        }
+    }
+}
+@media only screen and (max-width: 1650px){
+    header{
+        .logo img{width: 195px;}
+        nav li a{font-size: 16px;}
+    }
+    section{
+        .links a img{
+            width: 170px;
+        }
+        .navigation{
+            a{
+                @include square(20px);
+                &.act{
+                    box-shadow: 0px 0px 1px 3px #a0a29f;
+                }
+            }
+        }
+    }
+    #home{
+        .container{
+            > img{
+                width: 310px;
+            }
+            .text{
+                font-size: 23px;
+            }
+        }
+    }
+    #qr{
+        padding: 60px 0;
+        img{
+            width: 120px;
+        }
+        .text{
+            font-size: 38px;
+        }
+    }
+    #funcionalidades{
+        #phone1f{width: 220px;right: -40px;}
+        #phone1b{width: 155px;}
+        #phone2{width: 490px;}
+        #phone3f{width: 160px;}
+        #phone3b{width: 150px;left: 60px;}
+        article{
+            h2{
+                font-size: 38px;
+            }
+            .text{
+                .subtitle{
+                    font-size: 28px;
+                }
+                p{
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+    #vantagens{
+        h2{
+            font-size: 38px;
+        }
+        .grid{
+            .box{
+                padding: 60px 40px 30px;
+                h3{
+                    font-size: 26px;
+                }
+                p{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    #faixa-app{
+        figure{
+            padding: 7px;
+            img{
+                @include square(70px)
+            }
+        }
+        .phone{
+            width: 210px;margin: -20px 0;
+        }
+        .text{
+            font-size: 28px;
+        }
+    }
+    footer{
+        p{
+            font-size: 20px;padding: 25px 0;
+        }
+    }
+}
+@media only screen and (max-width: 1366px){
+    .content{
+        padding: 0 6%;
+    }
+}
+@media only screen and (max-width: 960px){
+    section{
+        .navigation{
+            display: none;
+        }
+    }
+    header{
+        .content{ 
+            padding: 0 4%;
+        }
+        .menu-button{
+            display: flex;@include square(60px);padding: 15px 10px;position: relative;@include animationFade(500);
+            span{
+                @include animationFade(500);width: 100%;height: 3px;position: relative;display: block;border-radius: 10px;background-color: #fff;
+            }
+            span:nth-child(2)::before,
+            span:nth-child(2)::after{content: '';position: absolute;@include square(100%);background-color: #fff;position: absolute;top: 0;left: 0;@include animationFade(500);border-radius: 10px;}
+        }
+        &.menu-opened{
+            .menu-button{
+                transform: rotate(360deg);
+                span:nth-child(1){opacity: 0;}
+                span:nth-child(3){opacity: 0;}
+                span:nth-child(2){background-color: transparent;}
+                span:nth-child(2)::before{transform: rotate(45deg);}
+                span:nth-child(2)::after{transform: rotate(-45deg);}
+            }
+            nav{
+                transform: translateX(0);
+            }
+        }
+        nav{
+            position: absolute;top:0;left: 0;background-color: rgba(0,0,0,0.7);transform: translateX(-100%);@include animationFade(500);padding: 0;height: 100vh;width: 100%;
+            ul{
+                flex-direction: column;height: 100%;justify-content: center;
+                li + li{
+                    border-left: 0;
+                }
+                li{
+                    padding: 10px 20px;text-align: center;
+                    a{
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+    #home{
+        min-height: 500px;
+        .banner{
+            position: absolute;
+        }
+        .go-next{
+            display: none;
+        }
+        .content{
+            justify-content: center;align-items: flex-end;padding-bottom: 30px;
+        }
+    }
+    #qr{
+        display: none;
+    }
+    #funcionalidades{
+        article{
+            flex-direction: column;align-items: center;padding: 30px;
+            &.desk{
+                display: none;
+            }
+            &.second{
+                flex-direction: column-reverse;
+                .text{
+                    padding: 20px 0;
+                }
+            }
+            &.third{
+                .links{text-align: center;}
+            }
+            .text{
+                padding: 20px 0;
+            }
+        }
+        #phone2{
+            width: 320px;
+        }
+    }
+    #vantagens{
+        padding: 30px 0;
+        .grid{
+            flex-direction: column;
+            align-items: center;
+            .box{
+                width: 300px;margin-bottom: 50px;
+            }
+        }
+    }
+    #faixa-app{
+        figure{
+            display: none;
+        }
+        .content{
+            flex-direction: column;
+        }
+        .phone{
+            order: 0;margin: -30px 0 20px;
+        }
+        .text, .links{
+            order: 1;
+        }
+        .text{
+            font-weight: normal;
+        }
+        .links{
+            margin: 30px 0;
+        }
+    }
+    #footer p{padding: 15px 0;}
+}
+@media only screen and (max-width: 480px){
+    section .links a img{width: 120px;}
+    #home{
+        .container{
+            .text{
+                font-size: 21px;
+            }
+        }
+    }
+    #filme > img{
+        min-height: 400px;
+    }
+    #funcionalidades{
+        article{
+            padding: 30px 0 0;
+            h2{
+                font-size: 30px;
+                padding-bottom: 30px;
+                br{
+                    display: none;
+                }
+            }
+            p{
+                font-size: 18px;
+                br{
+                    display: none;
+                }
+            }
+            .subtitle{
+                font-size: 22px;
+                br{
+                    display: none;
+                }
+            }
+            &.third{
+                .links{
+                    padding-top: 40px;
+                }
+            }
+        }
+        #phone1f{width: 190px;right: -30px;}
+        #phone1b{width: 135px;left: -10px;}
+        #phone3b{width: 140px;left: 30px;}
+        #phone3f{width: 150px;left: -30px;}
+    }
+    #faixa-app .text br{display: none;}
+}
+@media only screen and (max-width: 340px){
+    #home .container > img{width: 260px;}
+    #home .container .text{font-size: 18px;}
+    #funcionalidades article{
+        #phone2{width: 260px;}
+    }
+}
